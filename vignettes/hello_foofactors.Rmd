@@ -49,7 +49,7 @@ freq_out(x)
 ```
 ####Detect factors that should be character 
 
-We regard a factor is a true factor if  # unique values != length, otherwise it is a chracter. If we want to judge a factor is a true factor or a character,use our dec_fac() function to achieve this goal! 
+We regard a factor is a true factor if  # unique values != length, otherwise it is a chracter. If we want to judge whether a factor is a true factor or a character,use our dec_fac() function to achieve this goal! 
 ```{r}
 factor1<-factor(c("small","medium","big"))
 factor2<- factor(c("1","2","2"))
