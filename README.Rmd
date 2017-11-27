@@ -23,15 +23,16 @@ Factors are a very useful type of variable in R, but they can also drive you nut
 ### Installation
 
 ```{r installation, eval = FALSE}
-devtools::install_github("jennybc/foofactors")
+devtools::install_github("xinyaofan/foofactors")
 ```
   
 ### Quick demo
 
-Binding two factors via `fbind()`:
+####Binding two factors via `fbind()`:
 
 ```{r}
 library(foofactors)
+library(forcats)
 a <- factor(c("character", "hits", "your", "eyeballs"))
 b <- factor(c("but", "integer", "where it", "counts"))
 ```
@@ -47,7 +48,7 @@ The `fbind()` function glues two factors together and returns factor.
 ```{r}
 fbind(a, b)
 ```
-
+####freq_out() function
 Often we want a table of frequencies for the levels of a factor. The base `table()` function returns an object of class `table`, which can be inconvenient for downstream work. Processing with `as.data.frame()` can be helpful but it's a bit clunky.
 
 ```{r}
@@ -62,3 +63,44 @@ The `freq_out()` function returns a frequency table as a well-named `tbl_df`:
 ```{r}
 freq_out(x)
 ```
+
+####detect factors that should be character 
+
+We regard a factor is a true factor if  # unique values != length, otherwise it is a chracter. If we want to judge a factor is a true factor or a character,use our dec_fac() function to achieve this goal! 
+```{r}
+factor1<-factor(c("small","medium","big"))
+factor2<- factor(c("1","2","2"))
+```
+
+We know factor1 is a character while factor2 is a really factor. 
+```{r}
+dect_fac(factor1)
+dect_fac(factor2)
+```
+
+See, use our function can get the same result!
+####reorder a factor in a descending order
+In R, we have a function fct_rev() to reorder a factor. This can help us reorder a factor in a descending order. This is sometimes useful when plotting a factor
+```{r}
+x<-factor(c("1", "2", "3", "4"))
+y<-factor(c("a","b","c","d"))
+levels(fct_rev(x))
+levels(fct_rev(y))
+```
+Use our reorder_des() function, you can get the same result!
+```{r}
+levels(reorder_desc(x))
+levels(reorder_desc(y))
+```
+####sets levels to the order in which they appear in the data.
+Sometimes, we want to get the levels of a factor and also keep their previous order in the factor.
+```{r}
+a<-factor(c("b","b","c","a"))
+b<-factor(c("2","2","1","4"))
+```
+And we know the results should be "b","c","a" and "2","1","4". Now we can use our function to check the answers.
+```{r}
+levels(set_level(a))
+levels(set_level(b))
+```
+See, the same answer as what we expect it to be.
