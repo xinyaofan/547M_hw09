@@ -1,4 +1,4 @@
-#' Set levels of a factor to the order appeared in data
+#' Set levels of a factor of the order appeared in data
 #'
 #' @param x a factor
 #'
