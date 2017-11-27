@@ -7,7 +7,7 @@ test_that("detect_fac can deal with invalid input", {
 })
 ##expect success
 test_that("detect_fac can detect true factor", {
-	a <- factor(c("A","A","B"))
+	a <- factor(c("a","a","b"))
 	b <- factor(c("1","2","2"))
   expect_identical(dect_fac(a), "It is a factor")
 	expect_identical(dect_fac(b), "It is a factor")
