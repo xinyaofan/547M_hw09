@@ -79,6 +79,7 @@ dect_fac(factor2)
 ```
 
 See, use our function can get the same result!
+
 ####reorder a factor in a descending order
 In R, we have a function fct_rev() to reorder a factor. This can help us reorder a factor in a descending order. This is sometimes useful when plotting a factor
 ```{r}
@@ -92,12 +93,14 @@ Use our reorder_des() function, you can get the same result!
 levels(reorder_desc(x))
 levels(reorder_desc(y))
 ```
+
 ####sets levels to the order in which they appear in the data.
 Sometimes, we want to get the levels of a factor and also keep their previous order in the factor.
 ```{r}
 a<-factor(c("b","b","c","a"))
 b<-factor(c("2","2","1","4"))
 ```
+
 And we know the results should be "b","c","a" and "2","1","4". Now we can use our function to check the answers.
 ```{r}
 levels(set_level(a))

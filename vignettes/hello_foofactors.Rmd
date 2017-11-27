@@ -62,6 +62,7 @@ dect_fac(factor2)
 ```
 
 See, use our function can get the same result!
+
 ####reorder a factor in a descending order
 In R, we have a function fct_rev() to reorder a factor. This can help us reorder a factor in a descending order. This is sometimes useful when plotting a factor
 ```{r}

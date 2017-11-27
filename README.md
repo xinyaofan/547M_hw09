@@ -17,6 +17,7 @@ devtools::install_github("xinyaofan/foofactors")
 
 ``` r
 library(foofactors)
+library(forcats)
 a <- factor(c("character", "hits", "your", "eyeballs"))
 b <- factor(c("but", "integer", "where it", "counts"))
 ```
@@ -36,6 +37,8 @@ fbind(a, b)
 #> [8] counts   
 #> Levels: but character counts eyeballs hits integer where it your
 ```
+
+#### freq\_out() function
 
 Often we want a table of frequencies for the levels of a factor. The base `table()` function returns an object of class `table`, which can be inconvenient for downstream work. Processing with `as.data.frame()` can be helpful but it's a bit clunky.
 
@@ -87,4 +90,46 @@ dect_fac(factor2)
 #> [1] "It is a factor"
 ```
 
-See, use our function can get the same result! \#\#\#\#reorder a factor in a descending order
+See, use our function can get the same result!
+
+#### reorder a factor in a descending order
+
+In R, we have a function fct\_rev() to reorder a factor. This can help us reorder a factor in a descending order. This is sometimes useful when plotting a factor
+
+``` r
+x<-factor(c("1", "2", "3", "4"))
+y<-factor(c("a","b","c","d"))
+levels(fct_rev(x))
+#> [1] "4" "3" "2" "1"
+levels(fct_rev(y))
+#> [1] "d" "c" "b" "a"
+```
+
+Use our reorder\_des() function, you can get the same result!
+
+``` r
+levels(reorder_desc(x))
+#> [1] "4" "3" "2" "1"
+levels(reorder_desc(y))
+#> [1] "d" "c" "b" "a"
+```
+
+#### sets levels to the order in which they appear in the data.
+
+Sometimes, we want to get the levels of a factor and also keep their previous order in the factor.
+
+``` r
+a<-factor(c("b","b","c","a"))
+b<-factor(c("2","2","1","4"))
+```
+
+And we know the results should be "b","c","a" and "2","1","4". Now we can use our function to check the answers.
+
+``` r
+levels(set_level(a))
+#> [1] "b" "c" "a"
+levels(set_level(b))
+#> [1] "2" "1" "4"
+```
+
+See, the same answer as what we expect it to be.
